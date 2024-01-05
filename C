@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Soal03 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Membaca input jumlah baris matriks
+        int N = scanner.nextInt();
+        scanner.nextLine(); // Membuang newline setelah membaca integer
+
+        // Membaca matriks warna
+        char[][] matriks = new char[N][N];
+        for (int i = 0; i < N; i++) {
+            String row = scanner.nextLine();
+            for (int j = 0; j < N; j++) {
+                matriks[i][j] = row.charAt(j);
+            }
+        }
+
+        // Melakukan inversi warna matriks
+        char[][] matriksInvers = inversiWarnaMatriks(matriks, N);
+
+        // Menampilkan hasil
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                System.out.print(matriksInvers[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    private static char[][] inversiWarnaMatriks(char[][] matriks, int N) {
+        char[][] matriksInvers = new char[N][N];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                // Menggunakan operator ternary untuk inversi warna
+                matriksInvers[i][j] = (matriks[i][j] == 'C') ? 'P' : 'C';
+            }
+        }
+        return matriksInvers;
+    }
+}
