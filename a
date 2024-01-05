@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Soal01 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Membaca input jumlah barang dan kapasitas maksimal kargo
+        int N = scanner.nextInt();
+        int K = scanner.nextInt();
+
+        // Membaca berat tiap barang
+        List<Integer> beratBarang = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            beratBarang.add(scanner.nextInt());
+        }
+
+        // Menentukan barang yang masuk kargo
+        int totalBerat = 0;
+        List<Integer> barangMasuk = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            if (totalBerat + beratBarang.get(i) <= K) {
+                barangMasuk.add(i + 1);
+                totalBerat += beratBarang.get(i);
+            }
+        }
+
+        // Menampilkan hasil
+       
+        for (int barang : barangMasuk) {
+            System.out.print(barang);
+        }
+        System.out.println("\n" + barangMasuk.size() + " barang, total berat " + totalBerat);
+       
+    }
+}
