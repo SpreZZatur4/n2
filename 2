@@ -1,0 +1,35 @@
+import java.util.Scanner;
+public class Soal02 {
+
+	public static void main(final String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String dira = sc.nextLine();
+		System.out.println(replaceVocal(dira));
+	}
+	static String replaceVocal(String dira){
+		int sB = dira.length();
+		String hP = "";
+		switch(sB % 5) {
+			case 0:
+				hP = "a";
+			break;
+			case 1:
+				hP = "E";
+			break;
+			case 2:
+				hP = "O";
+			break;
+			case 3:
+				hP = "I";
+			break;
+			case 4:
+				hP = "u";
+			break;		
+			case 5:
+				hP = "E";
+			break;		
+		}
+		String hasil = dira.replaceAll("[aiueoAIUEO]", hP);
+		return hasil;
+	}
+}
