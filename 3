@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class InverseMatrix {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Membaca dimensi matriks
+        int dimension = Integer.parseInt(scanner.nextLine());
+
+        // Membaca matriks warna
+        char[][] matrix = new char[dimension][dimension];
+        for (int i = 0; i < dimension; i++) {
+            String row = scanner.nextLine();
+            matrix[i] = row.toCharArray();
+        }
+
+        // Melakukan inversi pada matriks
+        char[][] invertedMatrix = inverseMatrix(matrix);
+
+        // Menampilkan matriks hasil inversi
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
+                System.out.print(invertedMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+
+    // Fungsi untuk melakukan inversi pada matriks
+    private static char[][] inverseMatrix(char[][] matrix) {
+        int dimension = matrix.length;
+        char[][] invertedMatrix = new char[dimension][dimension];
+
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
+                // Inversi baris matriks warna
+                invertedMatrix[i][j] = matrix[i][dimension - 1 - j];
+            }
+        }
+
+        return invertedMatrix;
+    }
+}
